@@ -6,13 +6,10 @@
     <div class="text-left">
         <h1 class=display-4>Medžiagų mokslas</h1>
 
-        <h6>Forma: rasti medžiagą pagal nurodytą varžą, temperatūrą ir išmatavimus</h6>
-        <form action="/" method="post"></form>
-
         <h6>Forma: rasti medžiagos varžą pagal nurodytą medžiagos id, min-max temperatūrą ir išmatavimus</h6>
         <form action="/" method="post">
             @{
-                Model.list = await Model.GetMaterialsAsync();
+                Model.list = await Model.GetDropdownMaterialsAsync();
                 <select>
                     @foreach (var item in Model.list)
                     {
@@ -22,4 +19,8 @@
                 </select>
             }
         </form>
+
+        <h6>Forma: rasti medžiagą varžą pagal nurodytą varžą, temperatūrą ir išmatavimus</h6>
+        <form action="/" method="post"></form>
+
     </div>

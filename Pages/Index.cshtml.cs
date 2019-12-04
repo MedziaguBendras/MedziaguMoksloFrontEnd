@@ -16,7 +16,6 @@ namespace MedziaguMoksloFrontEnd.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         public List<MaterialForDropDownList> list = new List<MaterialForDropDownList>();
-        public Rezultatas r = new Rezultatas();
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -27,7 +26,7 @@ namespace MedziaguMoksloFrontEnd.Pages
 
         }
 
-        public async Task<List<MaterialForDropDownList>> GetMaterialsAsync()
+        public async Task<List<MaterialForDropDownList>> GetDropdownMaterialsAsync()
         {
             HttpClient client = new HttpClient();
             var responseString = await client.GetAsync("https://localhost:5001/api/material/dropdown");
@@ -35,9 +34,5 @@ namespace MedziaguMoksloFrontEnd.Pages
                 await responseString.Content.ReadAsStringAsync(), typeof(List<MaterialForDropDownList>));
             return res;
         }
-    }
-    public class Rezultatas
-    {
-        public string rezultatas { get; set; }
     }
 }
